@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "author": "vizzard gv",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 21.99, "left": -333.95, "attrs": {} },
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 217.8, "left": -141.2, "attrs": {} },
+    { "type": "wokwi-breadboard-mini", "id": "bb2", "top": 267.4, "left": -568.8, "attrs": {} },
+    { "type": "wokwi-gas-sensor", "id": "gas", "top": -254.93, "left": -700.8, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "tb1",
+      "top": -179.05,
+      "left": -703.99,
+      "attrs": { "text": "Gas Sensor-Mq131." }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "tb2",
+      "top": -385.74,
+      "left": 158.37,
+      "attrs": { "text": "Tilt Sensor" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "tb3",
+      "top": -79.15,
+      "left": 329.16,
+      "attrs": { "text": "pressure Sensor-hx711" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "tb4",
+      "top": -94.85,
+      "left": 19.8,
+      "attrs": { "text": "light Sensor(Photo resistor)" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "tb5",
+      "top": -205.88,
+      "left": -200.08,
+      "attrs": { "text": "temperature & humidity -DHT22" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -150.05,
+      "left": -112.46,
+      "attrs": { "temperature": "7.2", "humidity": "48" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": 236.8,
+      "left": 332,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -57.45,
+      "left": 52.02,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hx711",
+      "id": "cell1",
+      "top": -28.91,
+      "left": 313.91,
+      "attrs": { "type": "50kg" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 31.92,
+      "left": -810.46,
+      "attrs": { "volume": "0.5" }
+    },
+    { "type": "wokwi-slide-switch", "id": "sw1", "top": -166.41, "left": -398.66, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": -352.68, "left": 151.12, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -27.22,
+      "left": -652.45,
+      "attrs": { "color": "white" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3", "bb1:tp.1", "red", [ "v38.74", "h143.41" ] ],
+    [ "esp:GND.1", "bb1:tn.1", "black", [ "h0" ] ],
+    [ "dht1:GND", "bb1:tn.6", "black", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:tp.3", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:D15", "blue", [ "v0" ] ],
+    [ "lcd:VCC", "bb1:tp.25", "red", [ "h0" ] ],
+    [ "lcd:GND", "bb1:tn.25", "black", [ "h0" ] ],
+    [ "ldr1:VCC", "bb1:tp.24", "red", [ "h0" ] ],
+    [ "ldr1:GND", "bb1:tn.23", "black", [ "h0" ] ],
+    [ "lcd:SCL", "esp:D22", "green", [ "h0" ] ],
+    [ "lcd:SDA", "esp:D21", "green", [ "h0" ] ],
+    [ "ldr1:DO", "esp:D14", "magenta", [ "h0" ] ],
+    [ "cell1:VCC", "bb1:tp.20", "red", [ "h0" ] ],
+    [ "cell1:GND", "bb1:tn.21", "black", [ "h0" ] ],
+    [ "cell1:DT", "bb1:10b.f", "yellow", [ "h0" ] ],
+    [ "cell1:SCK", "bb1:11b.f", "yellow", [ "h0" ] ],
+    [ "bb1:10b.g", "bb2:17b.f", "cyan", [ "v0" ] ],
+    [ "bb1:11b.h", "bb2:16b.h", "yellow", [ "v0" ] ],
+    [ "esp:D32", "bb2:17b.j", "cyan", [ "h0" ] ],
+    [ "esp:D33", "bb2:16b.f", "yellow", [ "h0" ] ],
+    [ "bz1:1", "bb2:13t.a", "black", [ "v0" ] ],
+    [ "bb1:tn.2", "bb2:12t.e", "black", [ "v0" ] ],
+    [ "esp:D13", "bz1:2", "red", [ "h0" ] ],
+    [ "bb1:tp.4", "bb2:8b.g", "red", [ "v0" ] ],
+    [ "bb3:OUT", "esp:D35", "green", [ "h0" ] ],
+    [ "bb3:VCC", "bb2:8b.f", "red", [ "h0" ] ],
+    [ "bb3:GND", "bb2:12t.d", "black", [ "h0" ] ],
+    [ "bb3:DOUT", "esp:D35", "green", [ "h0" ] ],
+    [ "gas:VCC", "bb2:8b.f", "red", [ "h0" ] ],
+    [ "gas:GND", "bb2:12t.c", "black", [ "h0" ] ],
+    [ "sw1:3", "esp:D35", "green", [ "v0" ] ],
+    [ "sw1:2", "bb2:8b.h", "green", [ "v0" ] ],
+    [ "imu1:VCC", "bb2:8b.i", "red", [ "v0" ] ],
+    [ "imu1:GND", "bb1:tn.20", "black", [ "v0" ] ],
+    [ "esp:D22", "imu1:SCL", "green", [ "h0" ] ],
+    [ "imu1:SDA", "esp:D21", "green", [ "v0" ] ],
+    [ "led1:C", "bb2:12t.d", "black", [ "v0" ] ],
+    [ "led1:A", "esp:D25", "blue", [ "v0" ] ]
+  ]
+}
